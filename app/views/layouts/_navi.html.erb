@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+  <%= link_to 'SecondTuto' root_path, class: 'navbar-brand' %>
+
+  <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navber" aria-controls="Navber" aria-expanded="false" aria-label="ナビゲーションの切替">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="Navber">
+    <ul class="navbar-nav mr-auto">
+      <% if user_signed_in? %>
+        <li class="nav-item"><%= link_to 'マイページ', "#", class: 'nav-link' %></li> <!-- user_path(current_user) -->
+        <li class="nav-item"><%= link_to 'new_post_path', '#', class: 'nav-link' %></li>
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            メニュー
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">something</a>
+            <a class="dropdown-item" href="#">something</a>
+            <div class="dropdown-divider"></div>
+            <%= link_to "destroy_user_session_path", '#', method: :delete, class: 'dropdown-item' %>
+          </div>
+        </li>
+      <% else %>
+        <li class="nav-item"><%= link_to 'new_user_registration_path', '#', class: 'nav-link' %></li>
+        <li class="nav-item"><%= link_to 'new_user_session_path', '#', class: 'nav-link' %></li>
+      <% end %>
+    </ul>
+  </div><!-- /.navbar-collapse -->
+</nav>
